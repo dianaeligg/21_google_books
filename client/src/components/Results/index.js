@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 // Components
 import BookCard from '../BookCard.js';
 
-const Results = ({ title }) => {
+const Results = ({ title, results }) => {
 
     const searchedBooks = ['Searched 1', 'Searched 2', 'Searched 3'];
     const savedBooks = ['Saved 1', 'Saved 2']
@@ -29,6 +29,7 @@ const Results = ({ title }) => {
                         })
                     )}
             </Card.Body>
+            {console.log('results in Results page: ', results)}
         </Card>
     );
 
