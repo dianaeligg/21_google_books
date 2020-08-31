@@ -9,7 +9,7 @@ const BookSearch = (props) => {
         <Card className='my-4'>
             <Card.Header className='py-1 alert alert-primary'>Book Search</Card.Header>
             <Card.Body>
-                <Form inline>
+                <Form inline onSubmit={props.handleFormSubmit}>
                     <FormControl
                         type="text"
                         placeholder="Search"
