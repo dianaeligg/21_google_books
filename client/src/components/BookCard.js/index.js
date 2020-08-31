@@ -26,7 +26,7 @@ const BookCard = ({
                     </Col>
                     <Col xs={3} className='text-right'>
                         <Button className='py-1 px-2 mr-2 btn' variant="outline-primary"><a href={link} target='_blank' rel="noopener noreferrer">View</a></Button>
-                        {location.pathname === "/" ?
+                        {(location.pathname === "/" || location.pathname === "/Search") ?
                             <Button className='py-1 px-2 btn' variant="outline-info">Save</Button> :
                             <Button className='py-1 px-2 btn' variant="outline-danger">Delete</Button>}
                     </Col>
