@@ -8,7 +8,7 @@ const BookSearch = () => {
     const [searchState, setSearchState] = useState({
         search: ''
     });
-    const [resultsState, setResultsState] = useState();
+    const [resultsState, setResultsState] = useState([{}]);
 
 
     const searchBooks = query => {
@@ -21,8 +21,7 @@ const BookSearch = () => {
                 console.log('description: ', res.data.items[0].volumeInfo.description);
                 console.log('image: ', res.data.items[0].volumeInfo.imageLinks.thumbnail);
                 console.log('link: ', res.data.items[0].volumeInfo.infoLink);
-                setResultsState(res.data.items)
-                console.log('resultsState: ', resultsState);
+                setResultsState(res.data.items);
             })
             .catch(err => console.log(err));
     };
@@ -59,6 +58,7 @@ const BookSearch = () => {
                         variant="outline-primary"
                         onClick={handleFormSubmit}
                     >Search</Button>
+                    {console.log('resultsState: ', resultsState)}
                 </Form>
             </Card.Body>
         </Card>
