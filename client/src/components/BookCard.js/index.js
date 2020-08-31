@@ -5,12 +5,15 @@ import './BookCard.css'
 
 
 const BookCard = ({
+    index,
+    id,
     title,
     subtitle,
     authors,
     description,
     image,
-    link
+    link,
+    handleSaveClick
 }) => {
 
     const location = useLocation();
@@ -27,7 +30,13 @@ const BookCard = ({
                     <Col xs={3} className='text-right'>
                         <Button className='py-1 px-2 mr-2 btn' variant="outline-primary"><a href={link} target='_blank' rel="noopener noreferrer">View</a></Button>
                         {(location.pathname === "/" || location.pathname === "/Search") ?
-                            <Button className='py-1 px-2 btn' variant="outline-info">Save</Button> :
+                            <Button
+                                className='py-1 px-2 btn'
+                                variant="outline-info"
+                                id={id}
+                                index={index}
+                                onClick={handleSaveClick}
+                            >Save</Button> :
                             <Button className='py-1 px-2 btn' variant="outline-danger">Delete</Button>}
                     </Col>
                 </Row>

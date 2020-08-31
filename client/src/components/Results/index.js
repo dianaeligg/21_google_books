@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 // Components
 import BookCard from '../BookCard.js';
 
-const Results = ({ title, results }) => {
+const Results = ({ title, results, handleSaveClick }) => {
 
     const savedBooks = ['Saved 1', 'Saved 2']
     let location = useLocation();
@@ -19,13 +19,16 @@ const Results = ({ title, results }) => {
                         if (book.volumeInfo !== undefined) {
                             return (
                                 <BookCard
+                                    index={index}
                                     key={index}
+                                    id={book.id}
                                     title={book.volumeInfo.title}
                                     subtitle={book.volumeInfo.subtitle}
                                     authors={book.volumeInfo.authors}
                                     description={book.volumeInfo.description}
                                     image={book.volumeInfo.imageLinks.thumbnail}
                                     link={book.volumeInfo.infoLink}
+                                    handleSaveClick={handleSaveClick}
                                 />
                             );
                         }
@@ -33,7 +36,11 @@ const Results = ({ title, results }) => {
                 ) : (
                         savedBooks.map((book, index) => {
                             return (
-                                <BookCard bookTitle={book} key={index} />
+                                <BookCard
+                                    key={index}
+                                    bookTitle={book}
+                                    handleSaveClick={handleSaveClick}
+                                />
                             );
                         })
 

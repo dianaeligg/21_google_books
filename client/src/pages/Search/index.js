@@ -1,4 +1,4 @@
-import React,{ useState }  from 'react';
+import React, { useState } from 'react';
 
 // Components
 import BookSearch from '../../components/BookSearch';
@@ -24,6 +24,14 @@ const Search = () => {
             .catch(err => console.log(err));
     };
 
+    /* const saveBook = book => {
+        GoogleAPI.search(query)
+            .then(res => {
+                setResultsState(res.data.items);
+            })
+            .catch(err => console.log(err));
+    }; */
+
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
@@ -37,6 +45,23 @@ const Search = () => {
         searchBooks(searchState.search);
     };
 
+    const handleSaveClick = e => {
+        console.log('id: ', e.target.getAttribute('id'));
+        console.log('index: ', e.target.getAttribute('index'));
+        let index = parseInt(e.target.getAttribute('index'));
+
+        let book = {
+            id: resultsState[index].id,
+            title: resultsState[index].volumeInfo.title,
+            subtitle: resultsState[index].volumeInfo.subtitle,
+            authors: resultsState[index].volumeInfo.authors,
+            description: resultsState[index].volumeInfo.description,
+            image: resultsState[index].volumeInfo.imageLinks.thumbnail,
+            link: resultsState[index].volumeInfo.infoLink
+        }
+        console.log('book: ', book);
+    }
+
 
     return (
         <div className='px-5'>
@@ -48,6 +73,7 @@ const Search = () => {
             <Results
                 title={'Results'}
                 results={resultsState}
+                handleSaveClick={handleSaveClick}
             />
         </div>
     );
