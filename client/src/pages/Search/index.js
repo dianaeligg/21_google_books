@@ -6,6 +6,7 @@ import Results from '../../components/Results';
 
 // Utils
 import GoogleAPI from "../../utils/GoogleAPI";
+import API from "../../utils/API";
 
 
 const Search = () => {
@@ -24,13 +25,14 @@ const Search = () => {
             .catch(err => console.log(err));
     };
 
-    /* const saveBook = book => {
-        GoogleAPI.search(query)
+    const saveBook = book => {
+        API.saveBook(book)
             .then(res => {
-                setResultsState(res.data.items);
+                console.log('Book saved');
+                console.log('res: ', res);
             })
             .catch(err => console.log(err));
-    }; */
+    };
 
     const handleInputChange = e => {
         const name = e.target.name;
@@ -46,12 +48,9 @@ const Search = () => {
     };
 
     const handleSaveClick = e => {
-        console.log('id: ', e.target.getAttribute('id'));
-        console.log('index: ', e.target.getAttribute('index'));
-        let index = parseInt(e.target.getAttribute('index'));
-
+        let index = e.target.getAttribute('index');
         let book = {
-            id: resultsState[index].id,
+            _id: resultsState[index].id,
             title: resultsState[index].volumeInfo.title,
             subtitle: resultsState[index].volumeInfo.subtitle,
             authors: resultsState[index].volumeInfo.authors,
@@ -60,6 +59,7 @@ const Search = () => {
             link: resultsState[index].volumeInfo.infoLink
         }
         console.log('book: ', book);
+        saveBook(book);
     }
 
 

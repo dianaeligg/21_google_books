@@ -6,7 +6,7 @@ import './BookCard.css'
 
 const BookCard = ({
     index,
-    id,
+    _id,
     title,
     subtitle,
     authors,
@@ -33,7 +33,7 @@ const BookCard = ({
                             <Button
                                 className='py-1 px-2 btn'
                                 variant="outline-info"
-                                id={id}
+                                id={_id}
                                 index={index}
                                 onClick={handleSaveClick}
                             >Save</Button> :

@@ -21,7 +21,7 @@ const Results = ({ title, results, handleSaveClick }) => {
                                 <BookCard
                                     index={index}
                                     key={index}
-                                    id={book.id}
+                                    _id={book.id}
                                     title={book.volumeInfo.title}
                                     subtitle={book.volumeInfo.subtitle}
                                     authors={book.volumeInfo.authors}
