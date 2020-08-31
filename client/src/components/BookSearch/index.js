@@ -22,7 +22,7 @@ const BookSearch = () => {
                 console.log('image: ', res.data.items[0].volumeInfo.imageLinks.thumbnail);
                 console.log('link: ', res.data.items[0].volumeInfo.infoLink);
                 setResultsState(res.data.items)
-                // console.log('resultsState: ', resultsState);
+                console.log('resultsState: ', resultsState);
             })
             .catch(err => console.log(err));
     };
