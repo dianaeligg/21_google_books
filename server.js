@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3001;
 
 // Environment Variables
 require('dotenv').config();
-console.log('process.env: ', process.env);
-console.log('process.env.API_KEY: ', process.env.API_KEY);
+// console.log('process.env: ', process.env);
+// console.log('process.env.API_KEY: ', process.env.API_KEY);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
