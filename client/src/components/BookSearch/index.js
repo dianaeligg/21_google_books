@@ -10,12 +10,19 @@ const BookSearch = () => {
     });
     const [resultsState, setResultsState] = useState();
 
+
     const searchBooks = query => {
         GoogleAPI.search(query)
             .then(res => {
-                console.log('res: ', res);
-                console.log('res.data : ', res.data);
-                setResultsState(res.data)
+                console.log('res.data.items : ', res.data.items);
+                console.log('title: ', res.data.items[0].volumeInfo.title);
+                console.log('subtitle: ', res.data.items[0].volumeInfo.subtitle);
+                console.log('authors: ', res.data.items[0].volumeInfo.authors);
+                console.log('description: ', res.data.items[0].volumeInfo.description);
+                console.log('image: ', res.data.items[0].volumeInfo.imageLinks.thumbnail);
+                console.log('link: ', res.data.items[0].volumeInfo.infoLink);
+                setResultsState(res.data.items)
+                // console.log('resultsState: ', resultsState);
             })
             .catch(err => console.log(err));
     };
@@ -59,3 +66,12 @@ const BookSearch = () => {
 }
 
 export default BookSearch;
+
+/* 
+        title: '',
+        subtitle: '',
+        authors: [],
+        description: '',
+        image: '',
+        link: ''
+*/
