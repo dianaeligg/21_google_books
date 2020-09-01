@@ -39,7 +39,9 @@ const Search = () => {
         setShowAlert(index);
         setTimeout(() => {
             setShowAlert('');
-        }, 3000);
+            getSavedBooks();
+        }, 2000);
+        
     }
 
     const handleDeleteClick = e => {
