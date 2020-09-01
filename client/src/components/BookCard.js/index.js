@@ -13,7 +13,8 @@ const BookCard = ({
     description,
     image,
     link,
-    handleSaveClick
+    handleSaveClick,
+    handleDeleteClick
 }) => {
 
     const location = useLocation();
@@ -37,7 +38,13 @@ const BookCard = ({
                                 index={index}
                                 onClick={handleSaveClick}
                             >Save</Button> :
-                            <Button className='py-1 px-2 btn' variant="outline-danger">Delete</Button>}
+                            <Button
+                                className='py-1 px-2 btn'
+                                variant="outline-danger"
+                                id={_id}
+                                index={index}
+                                onClick={handleDeleteClick}
+                            >Delete</Button>}
                     </Col>
                 </Row>
                 <Row>

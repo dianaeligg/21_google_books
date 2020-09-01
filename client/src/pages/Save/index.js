@@ -44,7 +44,7 @@ const Search = () => {
 
     const handleDeleteClick = e => {
         let index = e.target.getAttribute('index');
-        let id = e.target.getAttribute('_id');
+        let id = e.target.getAttribute('id');
         console.log('book_id to delete: ', id);
         deleteBook(id, index);
     }

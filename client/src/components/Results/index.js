@@ -62,7 +62,7 @@ const Results = ({ title, results, showAlert, handleSaveClick, handleDeleteClick
                                 <div key={index}>
                                     <BookCard
                                         index={index}
-                                        _id={book.id}
+                                        _id={book._id}
                                         title={book.title}
                                         subtitle={book.subtitle}
                                         authors={book.authors}
