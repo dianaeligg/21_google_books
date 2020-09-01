@@ -15,6 +15,7 @@ const Search = () => {
         search: ''
     });
     const [resultsState, setResultsState] = useState([{}]);
+    const [showAlert, setShowAlert] = useState('');
 
 
     const searchBooks = query => {
@@ -25,14 +26,22 @@ const Search = () => {
             .catch(err => console.log(err));
     };
 
-    const saveBook = book => {
+    const saveBook = (book, index) => {
         API.saveBook(book)
             .then(res => {
                 console.log('Book saved');
                 console.log('res: ', res);
+                showSavedBookAlert(index);
             })
             .catch(err => console.log(err));
     };
+
+    const showSavedBookAlert = (index) => {
+        setShowAlert(index);
+        setTimeout(() => {
+            setShowAlert('');
+        }, 3000);
+    }
 
     const handleInputChange = e => {
         const name = e.target.name;
@@ -59,7 +68,7 @@ const Search = () => {
             link: resultsState[index].volumeInfo.infoLink
         }
         console.log('book: ', book);
-        saveBook(book);
+        saveBook(book, index);
     }
 
 
@@ -73,6 +82,7 @@ const Search = () => {
             <Results
                 title={'Results'}
                 results={resultsState}
+                showAlert={showAlert}
                 handleSaveClick={handleSaveClick}
             />
         </div>
