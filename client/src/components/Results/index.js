@@ -26,7 +26,9 @@ const Results = ({ title, results, handleSaveClick }) => {
                                     subtitle={book.volumeInfo.subtitle}
                                     authors={book.volumeInfo.authors}
                                     description={book.volumeInfo.description}
-                                    image={book.volumeInfo.imageLinks.thumbnail}
+                                    image={book.volumeInfo.imageLinks !== undefined ? 
+                                        book.volumeInfo.imageLinks.thumbnail
+                                        : 'https://via.placeholder.com/150/0000FF/808080?Text=GooogleBook'}
                                     link={book.volumeInfo.infoLink}
                                     handleSaveClick={handleSaveClick}
                                 />
