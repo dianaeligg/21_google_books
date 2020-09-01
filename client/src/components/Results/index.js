@@ -5,8 +5,14 @@ import { useLocation } from "react-router-dom";
 // Components
 import BookCard from "../BookCard.js";
 
-const Results = ({ title, results, showAlert, handleSaveClick }) => {
-    const savedBooks = ["Saved 1", "Saved 2"];
+const Results = ({ title, results, showAlert, handleSaveClick, handleDeleteClick }) => {
+    // const savedBooks = ["Saved 1", "Saved 2"];
+    let savedBooks = [];
+    if (results.length > 0) {
+        savedBooks = [...results];
+    } 
+
+
     let location = useLocation();
 
     return (
@@ -26,7 +32,6 @@ const Results = ({ title, results, showAlert, handleSaveClick }) => {
                                 <div key={index}>
                                     <BookCard
                                         index={index}
-
                                         _id={book.id}
                                         title={book.volumeInfo.title}
                                         subtitle={book.volumeInfo.subtitle}
@@ -51,14 +56,35 @@ const Results = ({ title, results, showAlert, handleSaveClick }) => {
                         console.log("showAlert: ", showAlert);
                     })
                     : savedBooks.map((book, index) => {
-                        return (
-                            <BookCard
-                                key={index}
-                                bookTitle={book}
-                                handleSaveClick={handleSaveClick}
-                            />
-                        );
-                    })}
+                        if (book !== undefined) {
+                            console.log("showAlert: ", showAlert);
+                            return (
+                                <div key={index}>
+                                    <BookCard
+                                        index={index}
+                                        _id={book.id}
+                                        title={book.title}
+                                        subtitle={book.subtitle}
+                                        authors={book.authors}
+                                        description={book.description}
+                                        image={
+                                            book.image !== undefined
+                                                ? book.image
+                                                : "https://via.placeholder.com/150/0000FF/808080?Text=GooogleBook"
+                                        }
+                                        link={book.link}
+                                        handleDeleteClick={handleDeleteClick}
+                                    />
+                                    {parseInt(showAlert) === index ?
+                                            <Alert className='py-1 px-5 text-right' variant="yellow">
+                                            Book deleted
+                                            </Alert> : <div></div>
+                                    }
+                                </div>
+                            );
+                        }
+                    })
+                }
             </Card.Body>
             {console.log("results in Results page: ", results)}
         </Card>
