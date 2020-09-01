@@ -76,7 +76,7 @@ const Results = ({ title, results, showAlert, handleSaveClick, handleDeleteClick
                                         handleDeleteClick={handleDeleteClick}
                                     />
                                     {parseInt(showAlert) === index ?
-                                            <Alert className='py-1 px-5 text-right' variant="yellow">
+                                            <Alert className='py-1 px-5 text-right' variant="warning">
                                             Book deleted
                                             </Alert> : <div></div>
                                     }
